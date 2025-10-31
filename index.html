@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমার প্রথম ওয়েবসাইট</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #764ba2;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>আমার প্রথম ওয়েবসাইট</h1>
+            <p class="tagline">GitHub Pages ব্যবহার করে তৈরি</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="card">
+                <h2>ওয়েবসাইট সম্পর্কে</h2>
+                <p>এটি একটি স্ট্যাটিক ওয়েবসাইট যা GitHub Pages-এ হোস্ট করা হয়েছে। আপনি সহজেই এই টেমপ্লেটটি ব্যবহার করে আপনার নিজের ওয়েবসাইট তৈরি করতে পারেন।</p>
+                <a href="#" class="btn">আরও জানুন</a>
+            </div>
+            
+            <div class="card">
+                <h2>GitHub Pages</h2>
+                <p>GitHub Pages হল একটি ফ্রি স্ট্যাটিক সাইট হোস্টিং সার্ভিস যা সরাসরি GitHub রিপোজিটরি থেকে ফাইল সরবরাহ করে।</p>
+                <a href="https://pages.github.com" class="btn" target="_blank">অফিসিয়াল সাইট</a>
+            </div>
+            
+            <div class="card">
+                <h2>কাস্টমাইজেশন</h2>
+                <p>আপনি এই ওয়েবসাইটটি HTML, CSS এবং JavaScript ব্যবহার করে কাস্টমাইজ করতে পারেন। আপনার প্রয়োজন অনুযায়ী কন্টেন্ট যোগ করুন।</p>
+                <a href="#" class="btn">শুরু করুন</a>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© ২০২৩ - আমার ওয়েবসাইট | GitHub Pages-এ তৈরি</p>
+        </footer>
+    </div>
+</body>
+</html>
