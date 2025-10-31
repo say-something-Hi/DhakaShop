@@ -3,140 +3,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>আমার প্রথম ওয়েবসাইট</title>
+    <title>ঢাকা শপ - আপনার বিশ্বস্ত ই-কমার্স প্লাটফর্ম</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #ff6b6b;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
         }
         
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
+            background-color: #f5f5f5;
+            color: var(--dark);
             line-height: 1.6;
-            min-height: 100vh;
-            padding: 20px;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
         
+        /* Header Styles */
         header {
-            text-align: center;
-            padding: 40px 0;
-            color: white;
-        }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .tagline {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        .main-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .card {
             background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         
-        .card:hover {
-            transform: translateY(-5px);
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
         }
         
-        .card h2 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
         }
         
-        .card p {
-            color: #666;
-            margin-bottom: 20px;
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .admin-btn {
+            background: var(--accent);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
         
         .btn {
             display: inline-block;
-            background: #667eea;
+            background: var(--accent);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 30px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
         
         .btn:hover {
-            background: #764ba2;
+            background: #ff5252;
+            transform: translateY(-2px);
         }
         
-        footer {
+        /* Products Section */
+        .products {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
             text-align: center;
-            margin-top: 50px;
-            padding: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 200px;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .product-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
             color: white;
-            opacity: 0.8;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .admin-access {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
         }
         
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
+            .nav-links {
+                display: none;
             }
             
-            .main-content {
-                grid-template-columns: 1fr;
+            .hero h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>আমার প্রথম ওয়েবসাইট</h1>
-            <p class="tagline">GitHub Pages ব্যবহার করে তৈরি</p>
-        </header>
-        
-        <div class="main-content">
-            <div class="card">
-                <h2>ওয়েবসাইট সম্পর্কে</h2>
-                <p>এটি একটি স্ট্যাটিক ওয়েবসাইট যা GitHub Pages-এ হোস্ট করা হয়েছে। আপনি সহজেই এই টেমপ্লেটটি ব্যবহার করে আপনার নিজের ওয়েবসাইট তৈরি করতে পারেন।</p>
-                <a href="#" class="btn">আরও জানুন</a>
-            </div>
-            
-            <div class="card">
-                <h2>GitHub Pages</h2>
-                <p>GitHub Pages হল একটি ফ্রি স্ট্যাটিক সাইট হোস্টিং সার্ভিস যা সরাসরি GitHub রিপোজিটরি থেকে ফাইল সরবরাহ করে।</p>
-                <a href="https://pages.github.com" class="btn" target="_blank">অফিসিয়াল সাইট</a>
-            </div>
-            
-            <div class="card">
-                <h2>কাস্টমাইজেশন</h2>
-                <p>আপনি এই ওয়েবসাইটটি HTML, CSS এবং JavaScript ব্যবহার করে কাস্টমাইজ করতে পারেন। আপনার প্রয়োজন অনুযায়ী কন্টেন্ট যোগ করুন।</p>
-                <a href="#" class="btn">শুরু করুন</a>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-shopping-bag"></i>
+                    ঢাকা শপ
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> হোম</a></li>
+                    <li><a href="#products"><i class="fas fa-box"></i> পণ্য</a></li>
+                    <li><a href="#contact"><i class="fas fa-phone"></i> যোগাযোগ</a></li>
+                    <li><a href="admin.html" class="admin-btn"><i class="fas fa-cog"></i> অ্যাডমিন</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>ঢাকা শপে স্বাগতম</h1>
+            <p>বাংলাদেশের সেরা অনলাইন শপিং experience</p>
+            <a href="#products" class="btn">পণ্য দেখুন</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">আমাদের পণ্য সমূহ</h2>
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be loaded here dynamically -->
             </div>
         </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <h3>ঢাকা শপ</h3>
+            <p>আপনার বিশ্বস্ত অনলাইন শপিং পার্টনার</p>
+            
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="tel:+8801700123456"><i class="fas fa-phone"></i> ০১৭০০-১২৩৪৫৬</a>
+            </div>
+            
+            <div class="admin-access">
+                <p>অ্যাডমিন এক্সেস: <a href="admin.html" style="color: #ff6b6b;">/admin</a></p>
+                <p>নতুন প্রোডাক্ট যোগ করুন: <a href="add-product.html" style="color: #ff6b6b;">প্রোডাক্ট যোগ করুন</a></p>
+            </div>
+            
+            <p>&copy; ২০২৪ ঢাকা শপ - সকল অধিকার সংরক্ষিত</p>
+        </div>
+    </footer>
+
+    <script>
+        // Load products from localStorage
+        function loadProducts() {
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const productGrid = document.getElementById('productGrid');
+            
+            if (products.length === 0) {
+                productGrid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
+                        <h3>কোন প্রোডাক্ট পাওয়া যাচ্ছে না</h3>
+                        <p>প্রথম প্রোডাক্ট যোগ করুন <a href="add-product.html">এখানে ক্লিক করে</a></p>
+                    </div>
+                `;
+                return;
+            }
+            
+            productGrid.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas ${product.icon || 'fa-box'}"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <div class="price">৳ ${product.price}</div>
+                        <div class="product-actions">
+                            <button class="btn" onclick="addToCart(${product.id})">
+                                <i class="fas fa-cart-plus"></i> কার্টে যোগ
+                            </button>
+                            <button class="btn btn-outline" onclick="viewProduct(${product.id})">
+                                <i class="fas fa-eye"></i> বিস্তারিত
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
         
-        <footer>
-            <p>© ২০২৩ - আমার ওয়েবসাইট | GitHub Pages-এ তৈরি</p>
-        </footer>
-    </div>
+        function addToCart(productId) {
+            alert('প্রোডাক্টটি কার্টে যোগ করা হয়েছে!');
+        }
+        
+        function viewProduct(productId) {
+            alert('প্রোডাক্ট বিস্তারিত দেখানো হবে');
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', loadProducts);
+    </script>
 </body>
-</html>
+            </html>
