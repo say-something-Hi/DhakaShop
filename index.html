@@ -3,245 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ঢাকা শপ - আপনার বিশ্বস্ত ই-কমার্স প্লাটফর্ম</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>ঢাকা শপ - অনলাইন শপিং</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial; }
+        body { background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
         
-        :root {
-            --primary: #667eea;
-            --secondary: #764ba2;
-            --accent: #ff6b6b;
-            --light: #f8f9fa;
-            --dark: #343a40;
-            --success: #28a745;
-        }
+        /* Header */
+        header { background: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: bold; color: #2563eb; }
+        .nav-links a { margin-left: 20px; text-decoration: none; color: #333; }
         
-        body {
-            background-color: #f5f5f5;
-            color: var(--dark);
-            line-height: 1.6;
+        /* Hero */
+        .hero { 
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white; padding: 60px 0; text-align: center; 
         }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 15px; }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* Products */
+        .products { padding: 40px 0; }
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; margin-top: 30px; 
         }
+        .product-card { 
+            background: white; border-radius: 10px; padding: 20px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: transform 0.3s;
+        }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-img { 
+            width: 100%; height: 200px; background: #f3f4f6; 
+            margin-bottom: 15px; border-radius: 8px; overflow: hidden;
+        }
+        .product-img img { width: 100%; height: 100%; object-fit: cover; }
+        .price { color: #2563eb; font-size: 20px; font-weight: bold; margin: 10px 0; }
+        .btn { 
+            background: #2563eb; color: white; padding: 10px 20px; 
+            border: none; border-radius: 5px; cursor: pointer; width: 100%;
+            font-size: 16px;
+        }
+        .btn:hover { background: #1e40af; }
         
-        /* Header Styles */
-        header {
-            background: white;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        /* Cart */
+        .cart-sidebar {
+            position: fixed; right: -400px; top: 0; width: 400px; height: 100%;
+            background: white; box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.3s; padding: 20px; overflow-y: auto;
         }
-        
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .admin-btn {
-            background: var(--accent);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background: #ff5252;
-            transform: translateY(-2px);
-        }
-        
-        /* Products Section */
-        .products {
-            padding: 5rem 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--dark);
-        }
-        
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .product-img {
-            width: 100%;
-            height: 200px;
-            background: var(--light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--primary);
-        }
-        
-        .product-info {
-            padding: 1.5rem;
-        }
-        
-        .product-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .product-info p {
-            color: #666;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-        
-        .price {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .product-actions {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
+        .cart-sidebar.open { right: 0; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
         
         /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-        }
-        
-        .admin-access {
-            margin-top: 2rem;
-            padding: 1rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 5px;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-        }
+        footer { background: #1f2937; color: white; text-align: center; padding: 30px; margin-top: 50px; }
     </style>
 </head>
 <body>
@@ -249,16 +65,11 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="index.html" class="logo">
-                    <i class="fas fa-shopping-bag"></i>
-                    ঢাকা শপ
-                </a>
-                <ul class="nav-links">
-                    <li><a href="index.html"><i class="fas fa-home"></i> হোম</a></li>
-                    <li><a href="#products"><i class="fas fa-box"></i> পণ্য</a></li>
-                    <li><a href="#contact"><i class="fas fa-phone"></i> যোগাযোগ</a></li>
-                    <li><a href="admin.html" class="admin-btn"><i class="fas fa-cog"></i> অ্যাডমিন</a></li>
-                </ul>
+                <div class="logo">🛍️ ঢাকা শপ</div>
+                <div class="nav-links">
+                    <a href="#" onclick="openCart()">🛒 কার্ট (<span id="cartCount">0</span>)</a>
+                    <a href="admin.html">🔐 অ্যাডমিন</a>
+                </div>
             </nav>
         </div>
     </header>
@@ -266,54 +77,62 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>ঢাকা শপে স্বাগতম</h1>
-            <p>বাংলাদেশের সেরা অনলাইন শপিং experience</p>
-            <a href="#products" class="btn">পণ্য দেখুন</a>
+            <h1>স্বাগতম ঢাকা শপে</h1>
+            <p>বাংলাদেশের সেরা অনলাইন শপিং</p>
         </div>
     </section>
 
     <!-- Products Section -->
-    <section class="products" id="products">
+    <section class="products">
         <div class="container">
-            <h2 class="section-title">আমাদের পণ্য সমূহ</h2>
+            <h2>আমাদের পণ্য সমূহ</h2>
             <div class="product-grid" id="productGrid">
-                <!-- Products will be loaded here dynamically -->
+                <!-- Products will load here -->
             </div>
         </div>
     </section>
 
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3>🛒 আমার কার্ট</h3>
+            <button onclick="closeCart()" style="background: none; border: none; font-size: 20px; cursor: pointer;">✕</button>
+        </div>
+        
+        <div id="cartItems">
+            <!-- Cart items will appear here -->
+        </div>
+        
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #eee;">
+            <div style="display: flex; justify-content: between; margin-bottom: 15px;">
+                <strong>মোট:</strong>
+                <strong id="cartTotal">৳ 0</strong>
+            </div>
+            <button class="btn" onclick="checkout()">✅ অর্ডার কনফার্ম করুন</button>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
-            <h3>ঢাকা শপ</h3>
-            <p>আপনার বিশ্বস্ত অনলাইন শপিং পার্টনার</p>
-            
-            <div class="footer-links">
-                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
-                <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="tel:+8801700123456"><i class="fas fa-phone"></i> ০১৭০০-১২৩৪৫৬</a>
-            </div>
-            
-            <div class="admin-access">
-                <p>অ্যাডমিন এক্সেস: <a href="admin.html" style="color: #ff6b6b;">/admin</a></p>
-                <p>নতুন প্রোডাক্ট যোগ করুন: <a href="add-product.html" style="color: #ff6b6b;">প্রোডাক্ট যোগ করুন</a></p>
-            </div>
-            
-            <p>&copy; ২০২৪ ঢাকা শপ - সকল অধিকার সংরক্ষিত</p>
+            <p>📞 যোগাযোগ: ০১৭০০-১২৩৪৫৬ | 📍 ঢাকা, বাংলাদেশ</p>
+            <p style="margin-top: 10px; opacity: 0.8;">অ্যাডমিন লগইন: <a href="admin.html" style="color: #60a5fa;">/admin</a></p>
         </div>
     </footer>
 
     <script>
-        // Load products from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Load products
         function loadProducts() {
             const products = JSON.parse(localStorage.getItem('products')) || [];
             const productGrid = document.getElementById('productGrid');
             
-            if (products.length === 0) {
+            if(products.length === 0) {
                 productGrid.innerHTML = `
-                    <div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
-                        <h3>কোন প্রোডাক্ট পাওয়া যাচ্ছে না</h3>
-                        <p>প্রথম প্রোডাক্ট যোগ করুন <a href="add-product.html">এখানে ক্লিক করে</a></p>
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                        <h3>🚫 কোনো পণ্য পাওয়া যাচ্ছে না</h3>
+                        <p>অ্যাডমিন প্রথম পণ্য যোগ করুন</p>
                     </div>
                 `;
                 return;
@@ -322,35 +141,125 @@
             productGrid.innerHTML = products.map(product => `
                 <div class="product-card">
                     <div class="product-img">
-                        <i class="fas ${product.icon || 'fa-box'}"></i>
+                        ${product.image ? 
+                            `<img src="${product.image}" alt="${product.name}">` : 
+                            '<div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #666;">📷 ছবি নেই</div>'
+                        }
                     </div>
-                    <div class="product-info">
-                        <h3>${product.name}</h3>
-                        <p>${product.description}</p>
-                        <div class="price">৳ ${product.price}</div>
-                        <div class="product-actions">
-                            <button class="btn" onclick="addToCart(${product.id})">
-                                <i class="fas fa-cart-plus"></i> কার্টে যোগ
-                            </button>
-                            <button class="btn btn-outline" onclick="viewProduct(${product.id})">
-                                <i class="fas fa-eye"></i> বিস্তারিত
-                            </button>
-                        </div>
-                    </div>
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <div class="price">৳ ${product.price}</div>
+                    <button class="btn" onclick="addToCart(${product.id})">
+                        🛒 কার্টে যোগ
+                    </button>
                 </div>
             `).join('');
         }
-        
+
+        // Cart functions
         function addToCart(productId) {
-            alert('প্রোডাক্টটি কার্টে যোগ করা হয়েছে!');
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const product = products.find(p => p.id === productId);
+            
+            if(product) {
+                const existingItem = cart.find(item => item.id === productId);
+                if(existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({...product, quantity: 1});
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCart();
+                alert('✅ পণ্য কার্টে যোগ হয়েছে!');
+            }
         }
-        
-        function viewProduct(productId) {
-            alert('প্রোডাক্ট বিস্তারিত দেখানো হবে');
+
+        function updateCart() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            if(cart.length === 0) {
+                cartItems.innerHTML = '<p>কার্টে কোনো পণ্য নেই</p>';
+                cartTotal.textContent = '৳ 0';
+                return;
+            }
+            
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div>
+                        <strong>${item.name}</strong>
+                        <p>৳ ${item.price} x ${item.quantity}</p>
+                    </div>
+                    <div>
+                        <button onclick="removeFromCart(${item.id})" style="background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">🗑️</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `৳ ${total}`;
         }
-        
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+        }
+
+        function openCart() {
+            document.getElementById('cartSidebar').classList.add('open');
+        }
+
+        function closeCart() {
+            document.getElementById('cartSidebar').classList.remove('open');
+        }
+
+        function checkout() {
+            if(cart.length === 0) {
+                alert('কার্টে কোনো পণ্য নেই!');
+                return;
+            }
+            
+            const customerName = prompt('আপনার নাম লিখুন:');
+            if(!customerName) return;
+            
+            const customerPhone = prompt('আপনার ফোন নম্বর:');
+            if(!customerPhone) return;
+            
+            const customerAddress = prompt('আপনার ঠিকানা:');
+            if(!customerAddress) return;
+            
+            const order = {
+                id: Date.now(),
+                customerName,
+                customerPhone, 
+                customerAddress,
+                items: [...cart],
+                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                status: 'pending',
+                date: new Date().toLocaleString('bn-BD')
+            };
+            
+            // Save order
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            orders.push(order);
+            localStorage.setItem('orders', JSON.stringify(orders));
+            
+            // Clear cart
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+            closeCart();
+            
+            alert(`✅ ধন্যবাদ ${customerName}! আপনার অর্ডারটি গ্রহণ করা হয়েছে। অর্ডার আইডি: #${order.id}`);
+        }
+
         // Initialize
-        document.addEventListener('DOMContentLoaded', loadProducts);
+        loadProducts();
+        updateCart();
     </script>
 </body>
             </html>
