@@ -10,23 +10,21 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Copy all source files
+# Copy all files
 COPY . .
 
 # Create necessary directories
 RUN mkdir -p public admin data
 
-# Copy HTML files to public directory
-COPY *.html ./
-COPY *.css ./
-COPY *.js ./
+# Verify files are copied
+RUN ls -la && \
+    echo "=== HTML Files ===" && \
+    ls -la *.html && \
+    echo "=== JS Files ===" && \
+    ls -la *.js
 
 # Expose port
-EXPOSE 3000
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD node -e "require('http').get('http://localhost:3000/', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"
+EXPOSE 10000
 
 # Start the application
 CMD ["node", "index.js"]
